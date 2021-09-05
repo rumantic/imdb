@@ -5,7 +5,7 @@ import {DetailComponent} from "./main/detail/detail.component";
 
 const routes: Routes = [
   {path: '', component: ListComponent},
-  {path: 'movie', component: DetailComponent},
+  {path: 'movie/:movie_id', component: DetailComponent},
 ];
 
 @NgModule({
