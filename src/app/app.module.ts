@@ -10,6 +10,9 @@ import { environment } from '../environments/environment';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { AsideComponent } from './layout/components/aside/aside.component';
 import { ListComponent } from './main/list/list.component';
+import {HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
+import { DetailComponent } from './main/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,15 @@ import { ListComponent } from './main/list/list.component';
     HeaderComponent,
     FooterComponent,
     AsideComponent,
-    ListComponent
+    ListComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    CommonModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

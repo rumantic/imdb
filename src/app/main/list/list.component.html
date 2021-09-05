@@ -1,1 +1,5 @@
-<p>list works!</p>
+<ul *ngIf="movieList">
+  <li *ngFor="let movie of movieList">
+    <a [routerLink]="'movie'">{{movie.title}}</a>
+  </li>
+</ul>
