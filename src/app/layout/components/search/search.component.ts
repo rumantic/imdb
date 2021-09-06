@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 import {MovieModel} from "../../../_models/movie.model";
+import {FilterService} from "../../../_services/filter.service";
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,9 @@ export class SearchComponent implements OnInit {
   public searchControl: FormControl;
   private debounce: number = 800;
 
-  constructor() {
+  constructor(
+    private filterService: FilterService
+  ) {
     this.searchControl = new FormControl('');
   }
 
@@ -22,8 +25,8 @@ export class SearchComponent implements OnInit {
         debounceTime(this.debounce),
         distinctUntilChanged(),
       )
-      .subscribe((result: any) => {
-        console.log(result);
+      .subscribe((result: string) => {
+        this.filterService.term_change(result);
       });
   }
 

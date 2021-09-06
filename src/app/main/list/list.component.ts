@@ -3,6 +3,7 @@ import {ImdbService} from "../../_services/imdb.service";
 import {MovieModel} from "../../_models/movie.model";
 import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 import {FormControl} from "@angular/forms";
+import {FilterService} from "../../_services/filter.service";
 
 @Component({
   selector: 'app-list',
@@ -15,6 +16,7 @@ export class ListComponent implements OnInit {
 
   constructor(
     private imdbService: ImdbService,
+    private filterService: FilterService
   ) {
   }
 
@@ -34,6 +36,10 @@ export class ListComponent implements OnInit {
      */
 
     //this.init_list();
+    this.filterService.change.subscribe((result: string) => {
+        console.log(result);
+      }
+    );
     this.init_fake_list();
   }
 
