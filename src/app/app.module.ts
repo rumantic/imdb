@@ -23,6 +23,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import { HelpComponent } from './main/help/help.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatButtonModule} from "@angular/material/button";
     FooterComponent,
     AsideComponent,
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
