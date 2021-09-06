@@ -12,16 +12,14 @@ import {FormControl} from "@angular/forms";
 export class ListComponent implements OnInit {
   public movieList: MovieModel[] = [];
   displayedColumns: string[] = ['title'];
-  public searchControl: FormControl;
-  private debounce: number = 800;
 
   constructor(
     private imdbService: ImdbService,
   ) {
-    this.searchControl = new FormControl('');
   }
 
   ngOnInit(): void {
+    /*
     this.searchControl.valueChanges
       .pipe(
         debounceTime(this.debounce),
@@ -33,6 +31,7 @@ export class ListComponent implements OnInit {
           this.movieList.push(item);
         });
       });
+     */
 
     //this.init_list();
     this.init_fake_list();

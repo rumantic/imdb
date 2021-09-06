@@ -24,6 +24,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import { HelpComponent } from './main/help/help.component';
+import { SearchComponent } from './layout/components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HelpComponent } from './main/help/help.component';
     AsideComponent,
     ListComponent,
     DetailComponent,
-    HelpComponent
+    HelpComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

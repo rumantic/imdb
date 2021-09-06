@@ -1,4 +1,5 @@
-.logo {
+@import "src/mixins.scss";
+.header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -6,6 +7,10 @@
     width: 50px;
   }
   .app-title {
+    @include respond-to(handhelds) { display: none; };
+  }
+  .search {
+    padding-left: 16px;
   }
 }
 
