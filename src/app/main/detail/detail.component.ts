@@ -21,6 +21,25 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.init_fake_movie();
+  }
+
+  init_fake_movie () {
+    this.movieItem = {
+      id: Math.random().toString(),
+      rank: '5',
+      title: 'The Lord of the rings',
+      fullTitle: 'The Lord of the rings',
+      year: '2001',
+      image: 'https://img4.labirint.ru/rc/fd814ea6cab12f08de9688d984989740/220x340/books41/403608/cover.jpg?1563724018',
+      crew: 'Crew',
+      imDbRating: '234',
+      imDbRatingCount: '4444',
+    };
+
+  }
+
+  init_real_movie () {
     this.imdbService.detail(this.movie_id).subscribe(
       (result: any) => {
         console.log(result);

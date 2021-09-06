@@ -21,6 +21,8 @@ import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import {MatInputModule} from "@angular/material/input";
     MatTableModule,
     FormsModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,11 @@
 .logo {
-  padding-left: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .image {
+    width: 50px;
+  }
+  .app-title {
+  }
 }
+
