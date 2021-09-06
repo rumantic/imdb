@@ -18,6 +18,9 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
+import {MatTableModule} from "@angular/material/table";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -44,7 +47,11 @@ import {MatListModule} from "@angular/material/list";
     MatDividerModule,
     MatIconModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
