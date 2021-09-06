@@ -11,7 +11,7 @@ import {FilterService} from "../../../_services/filter.service";
 })
 export class SearchComponent implements OnInit {
   public searchControl: FormControl;
-  private debounce: number = 800;
+  private debounce: number = 400;
 
   constructor(
     private filterService: FilterService
@@ -20,13 +20,16 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchControl.patchValue(localStorage.getItem('search'));
     this.searchControl.valueChanges
       .pipe(
         debounceTime(this.debounce),
         distinctUntilChanged(),
       )
       .subscribe((result: string) => {
-        this.filterService.term_change(result);
+        if ( result.length > 2 ) {
+          this.filterService.term_change(result);
+        }
       });
   }
 

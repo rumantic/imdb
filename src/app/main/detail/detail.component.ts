@@ -21,9 +21,11 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.init_fake_movie();
+    //this.init_fake_movie();
+    this.init_real_movie();
   }
 
+  /*
   init_fake_movie () {
     this.movieItem = {
       id: Math.random().toString(),
@@ -36,8 +38,8 @@ export class DetailComponent implements OnInit {
       imDbRating: '234',
       imDbRatingCount: '4444',
     };
-
   }
+   */
 
   init_real_movie () {
     this.imdbService.detail(this.movie_id).subscribe(

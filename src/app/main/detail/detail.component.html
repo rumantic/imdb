@@ -1,16 +1,25 @@
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{movieItem.title}}</mat-card-title>
+    <mat-card-title>{{movieItem.title}} <a href="https://www.kinopoisk.ru/film/1045449/">ссылка на фильм</a></mat-card-title>
     <mat-card-subtitle>{{movieItem.year}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{movieItem.image}}" alt="{{movieItem.title}}">
+  <img mat-card-image src="{{movieItem.image}}" class="movie-image" alt="{{movieItem.title}}">
   <mat-card-content>
     <p>
-      {{movieItem.title}}
+      Режиссер: <strong>{{movieItem.directors}}</strong>
+    </p>
+    <p>
+      Актеры: <strong>{{movieItem.stars}}</strong>
+    </p>
+    <p>
+      Теги: <strong>{{movieItem.keywords}}</strong>
+    </p>
+    <p>
+      {{movieItem.plot}}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button [routerLink]="'/'">Назад</button>
+    <button mat-button class="mat-primary" [routerLink]="'/'">Назад</button>
   </mat-card-actions>
 </mat-card>

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ImdbService} from "../../_services/imdb.service";
 import {MovieModel} from "../../_models/movie.model";
-import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
-import {FormControl} from "@angular/forms";
 import {FilterService} from "../../_services/filter.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-list',
@@ -12,7 +11,8 @@ import {FilterService} from "../../_services/filter.service";
 })
 export class ListComponent implements OnInit {
   public movieList: MovieModel[] = [];
-  displayedColumns: string[] = ['title'];
+  dataSource = new MatTableDataSource<MovieModel>();
+  displayedColumns: string[] = ['image','title'];
 
   constructor(
     private imdbService: ImdbService,
@@ -35,14 +35,16 @@ export class ListComponent implements OnInit {
       });
      */
 
-    //this.init_list();
-    this.filterService.change.subscribe((result: string) => {
-        console.log(result);
+    this.init_list();
+    this.filterService.change.subscribe((result: any) => {
+        this.update_list(result);
+        localStorage.setItem('search', result);
       }
     );
-    this.init_fake_list();
+    //this.init_fake_list();
   }
 
+  /*
   init_fake_list () {
     for ( let i = 0; i <= 100; i++ ) {
       this.movieList.push({
@@ -57,23 +59,42 @@ export class ListComponent implements OnInit {
         imDbRatingCount: '4444',
       });
     }
-
   }
+   */
 
-  init_list () {
-    this.imdbService.list().subscribe(
+  update_list (term:any) {
+    this.imdbService.search(term).subscribe(
       (result: any) => {
-        result.items.forEach((item: MovieModel) => {
+        console.log(result);
+        this.dataSource.data = [];
+        this.movieList = [];
+        result.results.forEach((item: MovieModel) => {
           this.movieList.push(item);
         });
-        console.log(this.movieList);
-        if ( result ) {
-        }
+        this.dataSource.data = this.movieList;
       },
       error => {
         console.log(error);
       },
     );
+  }
+
+  init_list () {
+    if ( localStorage.getItem('search') != null ) {
+      this.update_list(localStorage.getItem('search'));
+    } else {
+      this.imdbService.list().subscribe(
+        (result: any) => {
+          result.items.forEach((item: MovieModel) => {
+            this.movieList.push(item);
+          });
+          this.dataSource.data = this.movieList;
+        },
+        error => {
+          console.log(error);
+        },
+      );
+    }
   }
 
 }

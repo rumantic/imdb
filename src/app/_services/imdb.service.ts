@@ -11,16 +11,20 @@ export class ImdbService {
   ) { }
 
   get_api_url() {
-    //return 'https://imdb-api.com/en/API/';
-    return 'http://localhost/en/API/';
+    return 'https://imdb-api.com/en/API/';
+    //return 'http://localhost/en/API/';
   }
 
   get_api_key () {
-    return 'k_gm0onob4';
+    return 'k_okoxmou9';
   }
 
   list (term?: string) {
     return this.http.get(`${this.get_api_url()}Top250Movies/${this.get_api_key()}`);
+  }
+
+  search (expression: string) {
+    return this.http.get(`${this.get_api_url()}Search/${this.get_api_key()}/${expression}`);
   }
 
   detail ( movie_id: any ) {
