@@ -19,7 +19,7 @@ export class ImdbService {
     return 'k_okoxmou9';
   }
 
-  list (term?: string) {
+  list () {
     return this.http.get(`${this.get_api_url()}Top250Movies/${this.get_api_key()}`);
   }
 
